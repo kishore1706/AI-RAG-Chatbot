@@ -51,15 +51,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
+      id-token: write
+      contents: read
 
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: python-app
-      
+          path: .
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -67,23 +68,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A694844CE4AA4D88B763CB3AA29C632A }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DCA8AB11ACC9441E887F81380AB5A7EF }}
 
-     - name: Download artifact from build job
-       uses: actions/download-artifact@v4
-       with:
-          name: python-app
-          path: .
-
-     - name: Login to Azure
-       uses: azure/login@v2
-       with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BDF583E65E434B6B83D11216DC5DD6DA }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A694844CE4AA4D88B763CB3AA29C632A }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DCA8AB11ACC9441E887F81380AB5A7EF }}
-
-     - name: Deploy to Azure Web App
-       uses: azure/webapps-deploy@v3
-       with:
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
           app-name: rag-ai-bot
           slot-name: Production
           package: ./backend
-          
