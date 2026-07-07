@@ -1,3 +1,2 @@
 #!/bin/bash
-
-gunicorn -w 1 -k uvicorn.workers.UvicornWorker app:app
+uvicorn app:app --host 0.0.0.0 --port 8000
