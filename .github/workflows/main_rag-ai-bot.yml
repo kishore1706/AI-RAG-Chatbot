@@ -61,10 +61,13 @@ jobs:
           name: python-app
           path: .
 
-      - name: List downloaded files
+      - name: Show downloaded files
         run: |
           pwd
-          ls -R
+          echo "Current directory:"
+          ls -la
+          echo "Recursive listing:"
+          find . -maxdepth 3 -type f
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -73,9 +76,5 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A694844CE4AA4D88B763CB3AA29C632A }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DCA8AB11ACC9441E887F81380AB5A7EF }}
 
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: rag-ai-bot
-          slot-name: Production
-          package: ./backend
+      - name: Stop here
+        run: exit 1
