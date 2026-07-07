@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fa;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* Header */
+
+/* Header */
+
+.header {
+  background: #1565C0;
+  color: white;
+  padding: 20px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header p {
+  margin-top: 5px;
+}
+
+/* Layout */
+
+.content {
+  display: flex;
+  height: calc(100vh - 120px);
+  overflow: hidden;
+}
+
+/* Sidebar */
+
+.sidebar {
+  width: 250px;
+  background: white;
+  padding: 25px;
+  box-shadow: 2px 0 8px rgba(0,0,0,.08);
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  color: #1565C0;
+}
+
+.sidebar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  padding: 12px;
+
+  background: #1565C0;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background: #0D47A1;
+}
+
+/* Chat Area */
+
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+.user-message {
+  background: #DCF8C6;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  max-width: 75%;
+  margin-left: auto;
+}
+
+.bot-message {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  max-width: 75%;
+  border-left: 5px solid #1565C0;
+}
+
+.user-message p,
+.bot-message p {
+  margin: 8px 0 0;
+}
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  height: 75vh;
+
+  overflow-y: auto;
+}
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.chat-input textarea {
+  flex: 1;
+  height: 80px;
+  padding: 12px;
+  font-size: 16px;
+  resize: none;
+  border-radius: 8px;
+}
+
+.chat-input button {
+  width: 120px;
+  border: none;
+  border-radius: 8px;
+  background: #1565C0;
+  color: white;
+  cursor: pointer;
+}
+
+.chat-input {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.messages-area {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+.chat-input button:disabled {
+  background: gray;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.chat-input textarea:disabled {
+  background: #f0f0f0;
+  cursor: not-allowed;
+}
